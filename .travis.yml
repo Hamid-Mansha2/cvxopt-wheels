@@ -43,6 +43,6 @@ deploy:
   container: wheelhouse
   on:
     repo: cvxopt/cvxopt-wheels
-    branch: master
+    branch: py310
     condition: $WHEELHOUSE_UPLOAD = 1
 
