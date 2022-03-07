@@ -5,36 +5,40 @@ env:
         - BUILD_COMMIT=1.3.0
         - BUILD_DEPENDS=""
         - TEST_DEPENDS="pytest"
-        - PLAT=x86_64
         - UNICODE_WIDTH=32
+#        - PLAT=x86_64
+#        - PLAT=arm64
 
 language: generic
 services: docker
 dist: xenial
+#osx_image: xcode12.5
+#osx_image: xcode13.2
+
 
 matrix:
   include:
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION="3.6"
-    - os: linux
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION="3.6"
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION="3.7"
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION="3.8"
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION="3.9"
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION="3.10"
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION="3.6"
+    - os: osx
       env:
         - MB_PYTHON_VERSION="3.7"
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION="3.8"
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION="3.9"
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION="3.10"
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION="3.6"
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION="3.7"
     - os: osx
       env:
         - MB_PYTHON_VERSION="3.8"
@@ -44,7 +48,6 @@ matrix:
     - os: osx
       env:
         - MB_PYTHON_VERSION="3.10"
-
 
 before_install:
     - source multibuild/common_utils.sh
@@ -64,10 +67,11 @@ deploy:
   username: martinandersen
   api_key:
     secure: "iY1q/4j4/Q3iujT7xSvlNcycWqiAQ+H+CERvDcovUqzPI46gFuDpXuXOtCmJXS/78ThyaYh6RLrrrVVOrVuOd0v0kHjq3+60C1AEWan579wTAOGt2JgeRjQrFTiIecLI09Z1KImck94yQVczpqjTn03W72FpGFtB4ORbSZrh+8h86ramoa5JnFpnfcYABjJO/7AnB1R9TKsH2nKQZb3qSwGf7YVjuk3LhY6cV6ZKfEpNaKRjV5uGL/b9owhoKri9YXH/dxJ1mxiNPtNdLbmgHpVN3Tf1JGMpz1EGPdLAvXp8DwrAe6N7e75qrvw0U9PyfYJEpipl9LFpPsJgeL8Aj+DgNiYzNXwm+IN/DbUKAe13xajiCYppqusA0gKDrBrD2DCBmepNZfedrhGIEh7mEMflJa+H+bcDdAqhx+qrXPfGH44xE+wnBv7kGPHLU4SmEhDAxXyKpn/6lVJsQXrQDlyyqLgUXw0S8ahoelZeAsOwDfahxbcnrS1Ig7WKG4oOyXUYiRngM9rcjoUXXOACsYoRTWsxbjAbvOcL+wNN9vMTXKdLreWOuRgfEPYZUE3ThiEzTck4gFfx+F55n2UV5ylSw8lOzdyJ03HEFsvikZTWYdTfc6qi2TDrMyWg6fzKr1HHQXUHWFxaPY1RvUrRw3LaJpbWuJ64QSBaeDsKBrs="
-  region: IAD
+  region: iad
   container: wheelhouse
+  edge: true
   on:
     repo: cvxopt/cvxopt-wheels
-    branch: master
+    all_branches: true
     condition: $WHEELHOUSE_UPLOAD = 1
 
