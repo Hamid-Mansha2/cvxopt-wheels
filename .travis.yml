@@ -7,13 +7,12 @@ env:
         - TEST_DEPENDS="pytest"
         - UNICODE_WIDTH=32
 #        - PLAT=x86_64
-#        - PLAT=arm64
+        - PLAT=arm64
 
 language: generic
 services: docker
 dist: xenial
-#osx_image: xcode12.5
-#osx_image: xcode13.2
+osx_image: xcode12u
 
 
 matrix:
@@ -36,15 +35,15 @@ matrix:
     # - os: osx
     #   env:
     #     - MB_PYTHON_VERSION="3.6"
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION="3.7"
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION="3.8"
-    - os: osx
-      env:
-        - MB_PYTHON_VERSION="3.9"
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION="3.7"
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION="3.8"
+    # - os: osx
+    #   env:
+    #     - MB_PYTHON_VERSION="3.9"
     - os: osx
       env:
         - MB_PYTHON_VERSION="3.10"
