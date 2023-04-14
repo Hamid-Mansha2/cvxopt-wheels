@@ -88,7 +88,6 @@ deploy:
   skip_cleanup: true
   on:
     repo: cvxopt/cvxopt-wheels
-    all_branches: true
     condition: $WHEELHOUSE_UPLOAD = 1
   edge: true
 
